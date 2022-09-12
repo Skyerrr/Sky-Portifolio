@@ -1,0 +1,97 @@
+{% include "/br/header.html" %}
+
+{% block content %}
+
+			  <!-- Breadcrumb + Active filters -->
+  <nav class="mb-3" aria-label="breadcrumb" style="background-color: #2b2f3eeb;">
+    <div class="container d-sm-flex align-items-center">
+      <ol class="breadcrumb breadcrumb-alt mb-0">
+        <li>
+          <a href="/" class="text-white"><i class="fa fa-home" aria-hidden="true"></i></a>
+        </li>
+
+        <li style="margin-left: 0.5em;" class="text-white">
+          <i class="fa fa-angle-right" style="margin-right: 5px;" aria-hidden="true"></i>
+          {{category.br_name}}
+        </li>
+                    <li style="margin-left: 0.5em;" class="text-white">
+          <i class="fa fa-angle-right" style="margin-right: 5px;" aria-hidden="true"></i>
+          {{subcategory.br_name}}
+        </li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- Shop catalog -->
+
+  <section class="container pt-3 pb-5 pb-md-6 mb-2 mb-lg-0">
+    <div class="d-flex align-items-center justify-content-between mb-4 pb-1 pb-sm-3 border-bottom border-light">
+
+      <h1 class="h2 mb-0 text-white">{{subcategory.br_name}}</h1>
+    </div>
+
+    <div class="row mx-n2">
+
+    <div class="row flex-lg-nowrap">
+      <!-- Product grid -->
+      <div class="col">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4" data-filters-columns>
+            {% for vehicle in all_vehicles %}
+                  <!-- Item -->
+          <div class="col pb-sm-2 mb-grid-gutter">
+            <div class="card card-product mx-auto">
+              <div class="card-product-img">
+                <a href="{{ url_for('show_vehicle', vehicle_id=vehicle.id) }}" class="card-img-top">
+                    <img src="{{ url_for('static', filename='img/' + vehicle.image) }}" alt="{{ vehicle.id }}" />
+                </a>
+                                    <div class="card-product-widgets-top">
+{% if vehicle.discount_value != 0: %}
+
+                      <span class="badge product-badge bg-danger">-{{'%0.0f'|format(vehicle.discount_value|float)}}%</span>
+                                        {% endif %}
+                    </div>
+                              </div>
+              <div class="card-body pb-2 bg-dark">
+                <h3 class="card-product-title mb-2">
+                  <a href="{{ url_for('show_vehicle', vehicle_id=vehicle.id) }}" class="nav-link text-white">{{vehicle.br_title}}</a>
+                </h3>
+                <div class="d-flex align-items-center">
+
+                    {% if vehicle.discount_value != 0: %}
+                    {% set new_price = (vehicle.discount_value / 100 * vehicle.br_price - vehicle.br_price) * (-1)|float %}
+
+                                          <span class="h5 d-inline-block mb-0 text-white">R$ {{'%0.2f'|format(new_price)}}</span>
+                    {% else %}
+                    <span class="h5 d-inline-block mb-0 text-white">R$ {{'%0.2f'|format(vehicle.br_price)}}</span>
+                    {% endif %}
+                    {% if vehicle.discount_value != 0: %}
+
+
+                      <del class="d-inline-block ms-2 ps-1 text-muted">R$ {{'%0.2f'|format(vehicle.br_price)}}</del>
+                    {% endif %}
+                                    </div>
+              </div>
+              <div class="card-footer bg-dark">
+                                <a href={{vehicle.tebex}} class="btn btn-primary d-block w-100">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    Comprar agora!
+                </a>
+
+              </div>
+            </div>
+          </div>
+{% endfor %}
+            </div>
+
+          </div>
+                </div>
+
+
+      </div>
+
+
+  </section>
+{% endblock %}
+			</main>
+
+{% include "/br/footer.html" %}

@@ -1,0 +1,235 @@
+{% include "/en/header.html" %}
+{% block content %}
+			  <!-- Breadcrumb + Active filters -->
+  <nav class="mb-3" aria-label="breadcrumb" style="background-color: #2b2f3eeb;">
+    <div class="container d-sm-flex align-items-center">
+      <ol class="breadcrumb breadcrumb-alt mb-0">
+        <li>
+          <a href="/" class="text-white"><i class="fa fa-home" aria-hidden="true"></i></a>
+        </li>
+        <li style="margin: 0 0.5em;" class="text-white">
+          <i class="fa fa-angle-right" style="margin-right: 5px;" aria-hidden="true"></i>
+          <a class="text-decoration-none text-white" href="{{ url_for('en_category_selected',en_name=category.en_name) }}">{{category.en_name}}</a>
+        </li>
+        <li class="text-white">
+          <i class="fa fa-angle-right" style="margin-right: 5px;" aria-hidden="true"></i>
+          {{vehicle.en_title}}
+        </li>
+      </ol>
+    </div>
+  </nav>
+
+
+  <!-- Page title -->
+  <section class="container d-md-flex align-items-center justify-content-between py-3 py-md-4 mb-3">
+    <h1 class="mb-2 mb-md-0 text-white">{{vehicle.en_title}}</h1>
+    <span class="text-muted"><strong>Vehicle. N.</strong> {{vehicle.id}}</span>
+  </section>
+
+
+  <!-- Single product -->
+  <section class="container mb-lg-3">
+
+    <div class="tab-content border-top pt-4">
+
+      <!-- General info -->
+      <div class="tab-pane fade show active pt-3" id="info" role="tabpanel">
+        <div class="row">
+          <div class="col-md-6 mb-md-0 mb-4">
+
+            <!-- Product gallery -->
+            <div class="tns-carousel-wrapper gallery product-gallery mx-auto" style="max-width: 570px;">
+              <div class="tns-carousel-inner" data-carousel-options='{
+                  "gutter": 15,
+                  "navContainer": "#tns-thumbnails",
+                  "controls": false
+                }'>
+
+                                                      <!-- Product gallery item -->
+                    <a class="gallery-item" target="_blank" href="{{vehicle.image1}}"
+                    data-sub-html='<h6 class="text-light">Gallery image caption #2</h6>'>
+                      <img class="rounded" src="{{ url_for('static', filename='img/' + vehicle.image) }}" alt="Carousel image">
+                    </a>
+                  {% for image in vehicle.to_gallery_db %}
+                                      <!-- Product gallery item -->
+                    <a class="gallery-item" target="_blank" href="{{ url_for('static', filename='img/' + image.images) }}"
+                    data-sub-html='<h6 class="text-light">Gallery image caption #2</h6>'>
+                      <img class="rounded" src="{{ url_for('static', filename='img/' + image.images) }}" alt="Carousel image">
+                    </a>
+                  {% endfor %}
+                    {% if vehicle.video %}
+                                    <a class="gallery-item video-item" target="_blank" href="{{vehicle.video}}"
+                    data-sub-html='<h6 class="text-light">Gallery image caption #5</h6>'>
+                    <img class="rounded" src="{{ url_for('static', filename='img/' + vehicle.image_video) }}" alt="Carousel image">
+                  </a> {% endif %}
+                                                                </div>
+
+
+              <!-- Product gallery thumbnails -->
+              <div class="tns-thumbnails" id="tns-thumbnails" style="justify-content: center;">
+                                                      <button type="button" data-nav="1">
+                      <img src="{{ url_for('static', filename='img/' + vehicle.image) }}" alt="Thumbnail">
+                    </button>
+                  {% for image in vehicle.to_gallery_db %}
+                                      <button type="button" data-nav="1">
+                      <img src="{{ url_for('static', filename='img/' + image.images) }}" alt="Thumbnail">
+                    </button>
+                  {% endfor %}
+                  {% if vehicle.video %}
+                  <!-- Youtube Video Button -->
+                         <button type="button" data-nav="4" class="video-indicator">
+                    <img src="{{ url_for('static', filename='img/' + vehicle.image_video) }}" alt="Thumbnail">
+                  </button>
+                  {% endif %}
+
+
+                                                                </div>
+            </div>
+          </div>
+          <div class="col-md-6 ps-xl-5">
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+
+              <!-- Price -->
+              <div class="d-flex align-items-center mb-sm-0 mb-4">
+                  {% if vehicle.discount_value != 0: %}
+                  {% set new_price = (vehicle.discount_value / 100 * vehicle.en_price - vehicle.en_price) * (-1)|float %}
+                                                        <span class="h3 d-inline-block mb-0 text-danger"> $ {{'%0.2f'|format(new_price)}}</span>
+                  {% else %}
+                    <span class="h3 d-inline-block mb-0 text-white">$ {{'%0.2f'|format(vehicle.en_price)}}</span>
+                  {% endif %}
+                    {% if vehicle.discount_value != 0: %}
+                      <del class="d-inline-block ms-2 ps-1 fs-lg text-muted">$ {{'%0.2f'|format(vehicle.en_price)}}</del>
+
+                      <span class="ms-4 p-2 badge bg-danger fs-base fw-bold">-{{'%0.0f'|format(vehicle.discount_value|float)}}%</span>
+                  {% endif %}
+                                                </div>
+            </div>
+
+            <!-- Terms -->
+            <!-- Accordion -->
+            <div class="accordion accordion-alt mb-4" id="accordion">
+
+              <!-- Item -->
+              <div class="accordion-item">
+                <h6 class="accordion-header">
+                  <button class="accordion-button border-bottom-0 text-white" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#accordionCollapse-1" aria-expanded="true"
+                    aria-controls="accordionCollapse-1">Product Details</button>
+                </h6>
+                <div class="accordion-collapse border-bottom-0 show" id="accordionCollapse-1"
+                  aria-labelledby="accordionHeading-1" data-bs-parent="#accordion">
+                  <div class="accordion-body pt-0 text-white">
+
+                        {{ vehicle.en_body|safe }}
+                  </div>
+                </div>
+              </div>
+
+                              <!-- Item -->
+                <div class="accordion-item">
+                  <h6 class="accordion-header">
+                    <button class="accordion-button border-bottom-0 collapsed text-white" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#accordionCollapse-2" aria-expanded="false"
+                      aria-controls="accordionCollapse-2">Otimization</button>
+                  </h6>
+                  <div class="accordion-collapse border-bottom-0 collapse" id="accordionCollapse-2"
+                    aria-labelledby="accordionHeading-2" data-bs-parent="#accordion">
+                    <div class="accordion-body pt-0 text-white">
+                            {{ vehicle.en_description|safe }}
+                    </div>
+                  </div>
+                </div>
+
+
+
+              <!-- Item -->
+              <div class="accordion-item">
+                <h6 class="accordion-header" id="accordionHeading-4">
+                  <button class="accordion-button border-bottom-0 collapsed text-white" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#accordionCollapse-4" aria-expanded="false"
+                    aria-controls="accordionCollapse-4">Return</button>
+                </h6>
+                <div class="accordion-collapse border-bottom-0 collapse" id="accordionCollapse-4"
+                  aria-labelledby="accordionHeading-4" data-bs-parent="#accordion">
+                  <div class="accordion-body pt-0">
+                    <p class="fs-sm text-white">
+                      All purchases are final; no refund or returns are offered at any point.
+                    </p>
+                    <ul class="ps-3 text-white">
+                      <li>For more information, <a href="https://checkout.tebex.io/terms" target="_blank" class="text-white">vist our ToS</a>.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+                        <!-- Payment -->
+            <div class="mt-3 pb-3 text-nowrap" data-simplebar data-simplebar-auto-hide="false" style="display: flex; justify-content: center; ">
+              <a href="#" class="d-inline-block mb-3 me-xl-4 me-3">
+                <img src="{{ url_for('static', filename='img/core/visa.jpg') }}" alt="Visa" class="border rounded">
+              </a>
+              <a href="#" class="d-inline-block mb-3 me-xl-4 me-3">
+                <img src="{{ url_for('static', filename='img/core/master-card.jpg') }}" alt="Mastercard"
+                  class="border rounded">
+              </a>
+              <a href="#" class="d-inline-block mb-3">
+                <img src="{{ url_for('static', filename='img/core/pay-pal.jpg') }}" alt="PayPal" class="border rounded">
+              </a>
+            </div>
+
+            <div class="alert alert-danger d-flex align-items-center" role="alert" style="font-size: 0.9em;">
+              <i class="fa-solid fa-triangle-exclamation bi flex-shrink-0 me-2"></i>
+              <div>
+                  This model works with FiveM ONLY. This model will NOT work in singleplayer.
+              </div>
+            </div>
+            <div class="alert alert-primary d-flex align-items-center" role="alert" style="font-size: 0.9em;">
+              <i class="fa-solid fa-circle-info bi flex-shrink-0 me-2"></i>
+              <div>
+                  This model utilizes cfx.re asset encryption and ownership transfer is permanent.
+              </div>
+            </div>
+
+            <!-- Add to Cart -->
+
+                            <div class="col-lg-6 order-lg-4 order-4 mx-auto">
+                <a href="{{vehicle.tebex}}" class="btn d-block w-100 btn-primary">
+                  <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                  Buy Now!
+                </a>
+                                {% if current_user.id == 1 %}
+                                <hr>
+            <a href="{{ url_for('edit_vehicle', vehicle_id=vehicle.id) }}" class="btn d-block w-100 btn-primary">
+
+                  Editar Vehicle
+                </a>
+           <hr>
+            <a href="{{ url_for('edit_gallery', vehicle_id=vehicle.id) }}" class="btn d-block w-100 btn-primary">
+
+                  Adicionar ou Remover fotos
+                </a>
+                                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div></div>
+  </section>
+
+			</main>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% include "/en/footer.html" %}

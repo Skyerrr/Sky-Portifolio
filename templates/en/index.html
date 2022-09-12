@@ -1,0 +1,129 @@
+{% include "/en/header.html" %}
+
+						    <style>
+			        a {
+			            color: #fff;
+			            text-decoration: none;
+			        }
+			        a:hover {
+			            color: #ADD8E6;
+			        }
+			    </style>
+				<!-- Promo bar -->
+									<section class="tns-promo-bar bg-primary py-2">
+						<div class="container d-flex justify-content-center">
+							<div class="fs-s text-light px-2">
+								<a href="https://www.redneckmods.com/category/fire-focused-vehicles"><strong>This page is a showcase only, no products or services are for sale.</strong></a>
+							</div>
+						</div>
+					</section>
+							
+			
+	<!-- Hero slider -->
+	<section id="indexCarousel" class="carousel slide" data-bs-ride="carousel">
+		<div class="carousel-indicators">
+			<button type="button" data-bs-target="#indexCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+			<button type="button" data-bs-target="#indexCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+			<button type="button" data-bs-target="#indexCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+			<button type="button" data-bs-target="#indexCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+			<button type="button" data-bs-target="#indexCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
+		</div>
+
+		<div class="carousel-inner">
+			<!-- Slide 1 -->
+			<div class="carousel-item active">
+				<img src="{{ url_for('static', filename='img/core/cover.png') }}" class="bd-placeholder-img" width="100%" height="100%"></img>
+
+				<div class="container">
+					<div class="carousel-caption text-start" style="margin-bottom: 25em;">
+						<h1 class="text-white text-center">Providing the highest quality & most popular emergency vehicle content for your FiveM server.</h1>
+					</div>
+				</div>
+			</div>
+
+			
+			<!-- Slide 2 -->
+			<div class="carousel-item">
+				<img src="{{ url_for('static', filename='img/core/Grand_Theft_Auto_V_Screenshot_2022.01.02_-_21.47.34.53.png') }}" class="bd-placeholder-img" width="100%" height="100%"></img>
+
+				<div class="container">
+					<div class="carousel-caption text-start" style="margin-bottom: 15em;">
+						<h1 class="text-white">LAW ENFORCEMENT VEHICLES</h1>
+						<p>Leading the way with the highest quality, revolutionary, multi-function LEO vehicles for your server, with the reliability you know and love.</p>
+						<p><a class="text-white btn btn-lg btn-primary" href="/category/packs-bundles-leo">Shop LEO</a></p>
+					</div>
+				</div>
+			</div>
+
+			<!-- Slide 3 -->
+			<div class="carousel-item">
+				<img src="{{ url_for('static', filename='img/core/AbmoCover.png') }}" class="bd-placeholder-img" width="100%" height="100%"></img>
+
+				<div class="container">
+					<div class="carousel-caption text-start" style="margin-bottom: 15em;">
+						<h1 class="text-white">FIRE &amp; EMS VEHICLES</h1>
+						<p>From the ground up, we have built up a exceptional fleet of Fire & EMS Vehicles to suit any needs of your server, with the same features you know and love from our LEO fleets.</p>
+						<p><a class="text-white btn btn-lg btn-primary" href="/category/fire-focused-vehicles">Shop FR &amp; EMS</a></p>
+					</div>
+				</div>
+			</div>
+
+			<!-- Slide 4 -->
+			<div class="carousel-item">
+				<img src="{{ url_for('static', filename='img/core/4.png') }}" class="bd-placeholder-img" width="100%" height="100%"></img>
+
+				<div class="container">
+					<div class="carousel-caption text-start" style="margin-bottom: 15em;">
+						<h1 class="text-white">DOT &amp; CIVILIAN</h1>
+						<p>We don't forget the civilians! Providing a wide range of DOT & Non-Emergency use vehicles to fit all aspects of roleplay within your community.</p>
+						<p><a class="text-white btn btn-lg btn-primary" href="/category/dot-focused-vehicles">Shop DOT &amp; Util</a></p>
+					</div>
+				</div>
+			</div>
+
+			<!-- Slide 5 -->
+			<div class="carousel-item">
+				<img src="{{ url_for('static', filename='img/core/218_20211011182224_1.png') }}" class="bd-placeholder-img" width="100%" height="100%"></img>
+
+				<div class="container">
+					<div class="carousel-caption text-start" style="margin-bottom: 15em;">
+						<h1 class="text-white">SPECIALTY VEHICLES</h1>
+						<p>We have an imagination too. Providing some of the most unique, fun, and stunning looking specialty vehicles to zoom around, and do hard work with.</p>
+						<p><a class="text-white btn btn-lg btn-primary" href="/category/specialty-leo-vehicles">Shop Specialty</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<button class="carousel-control-prev" type="button" data-bs-target="#indexCarousel" data-bs-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="visually-hidden">Previous</span>
+		</button>
+		<button class="carousel-control-next" type="button" data-bs-target="#indexCarousel" data-bs-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="visually-hidden">Next</span>
+		</button>
+	</section>
+
+	<section class="container-fluid px-xl-grid-gutter mt-5">
+		<div class="row">
+			<div class="col">
+								    <img src="{{ url_for('static', filename='img/core/Asset_63.svg') }}" alt="">
+    						</div>
+			<div class="w-100 m-3"></div>
+			<div class="col">
+								    <img src="{{ url_for('static', filename='img/core/Asset_59.svg') }}" alt="">
+    						</div>
+			<div class="col">
+								    <a href="/" target="_blank">
+    					<img src="{{ url_for('static', filename='img/core/Asset_70.svg') }}" alt="">
+    				</a>
+							</div>
+		</div>
+	</section>
+
+
+
+			</main>
+
+{% include "/en/footer.html" %}

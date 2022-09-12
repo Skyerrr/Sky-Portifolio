@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>BillyMods | Bem Vindo!</title>
+
+		<!-- SEO Meta Tags-->
+				<meta name="author" content="BillyMods">
+		<meta property="og:site_name" content="BillyMods">
+		<meta name="revisit-after" content="10 days">
+		<meta name="description" content="Entregando a melhor e maior qualidade de veículos para o seu servidor de FiveM! Veja nossos produtos hoje!">
+		<meta property="og:image" content="https://cdn.redneckmods.com/img/explore-page-banner-1920x1080.png">
+
+		<!-- Viewport-->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- Favicon and Touch Icons-->
+		<link rel="shortcut icon" href="https://dunb17ur4ymx4.cloudfront.net/webstore/favicons/f36134a01b990a2d2cf4d0553ecb967899bb84b3.png">
+		<meta name="msapplication-TileColor" content="#766df4">
+		<meta name="theme-color" content="#ffffff">
+
+		<!-- Vendor Styles-->
+		<link rel= "stylesheet" media="screen" href= "{{ url_for('static',filename='css/styles.css') }}">
+		<link rel= "stylesheet" media="screen" href= "{{ url_for('static',filename='css/tiny-slider.css') }}">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.3.1/css/flag-icon.min.css" rel="stylesheet"/>
+
+
+		<!-- Main Theme Styles + Bootstrap-->
+							<style>
+				.gallery-item.video-item::after {
+					content: "▶";
+				}
+				.tns-thumbnails [data-nav].video-indicator::before {
+					content: "▶";
+					line-height: 4rem;
+				}
+			  </style>
+
+
+		<!-- FontAwsome -->
+		<script src="https://kit.fontawesome.com/129c1ce1a7.js" crossorigin="anonymous"></script>
+
+		<!-- Page loading styles-->
+		<style>
+			.page-loading {
+				position: fixed;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				-webkit-transition: all 0.4s 0.2s ease-in-out;
+				transition: all 0.4s 0.2s ease-in-out;
+				background-color: #fff;
+				opacity: 0;
+				visibility: hidden;
+				z-index: 9999;
+			}
+			.page-loading.active {
+				opacity: 1;
+				visibility: visible;
+			}
+			.page-loading-inner {
+				position: absolute;
+				top: 50%;
+				left: 0;
+				width: 100%;
+				text-align: center;
+				-webkit-transform: translateY(-50%);
+				transform: translateY(-50%);
+				-webkit-transition: opacity 0.2s ease-in-out;
+				transition: opacity 0.2s ease-in-out;
+				opacity: 0;
+			}
+			.page-loading.active > .page-loading-inner {
+				opacity: 1;
+			}
+			.page-loading-inner > span {
+				display: block;
+				font-size: 1rem;
+				font-weight: normal;
+				color: #787a80;
+			}
+			.page-spinner {
+				display: inline-block;
+				width: 2.75rem;
+				height: 2.75rem;
+				margin-bottom: 0.75rem;
+				vertical-align: text-bottom;
+				background-color: #cfcfd1;
+				border-radius: 50%;
+				opacity: 0;
+				-webkit-animation: spinner 0.75s linear infinite;
+				animation: spinner 0.75s linear infinite;
+			}
+			@-webkit-keyframes spinner {
+				0% {
+					-webkit-transform: scale(0);
+					transform: scale(0);
+				}
+				50% {
+					opacity: 1;
+					-webkit-transform: none;
+					transform: none;
+				}
+			}
+			@keyframes spinner {
+				0% {
+					-webkit-transform: scale(0);
+					transform: scale(0);
+				}
+				50% {
+					opacity: 1;
+					-webkit-transform: none;
+					transform: none;
+				}
+			}
+		</style>
+
+					<style>
+				.theVideo {
+					height: 150%;
+					width: 100%;
+					margin-top: -5em;
+				}
+			</style>
+
+		<!-- Page loading scripts-->
+		<script>
+			(function () {
+				window.onload = function () {
+					var preloader = document.querySelector('.page-loading');
+					preloader.classList.remove('active');
+					setTimeout(function () {
+						preloader.remove();
+						}, 2000);
+				};
+			})();
+		</script>
+	</head>
+
+
+	<!-- Body-->
+	<body>
+
+		<!-- Page loading spinner-->
+		<div class="page-loading active bg-dark">
+			<div class="page-loading-inner">
+				<div class="page-spinner text-white"></div>
+				<span class="text-white">Carregando...</span>
+			</div>
+		</div>
+
+		<!-- Page wrapper for sticky footer -->
+		<!-- Wraps everything except footer to push footer to the bottom of the page if there is little content -->
+		<main class="page-wrapper bg-dark">
+
+
+			<!-- Header (Topbar + Navbar) -->
+			<header class="header">
+
+				<!-- Navbar -->
+				<!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page -->
+				<div class="navbar navbar-expand-lg navbar-light bg-dark navbar-sticky" data-fixed-element>
+					<div class="container px-0 px-xl-3">
+													<a href="/pt-br" class="navbar-brand order-lg-1 me-0 pe-lg-3 me-lg-4">
+								<img src="{{ url_for('static', filename='img/core/billy-logo-small.png') }}" alt="BillyMods Logo" width="130">
+							</a>
+												<!-- Toolbar -->
+						<div class="d-flex align-items-center order-lg-3">
+							<ul class="nav nav-tools flex-nowrap">
+
+								<li class="divider-vertical mb-0 d-lg-none d-block"></li>
+								<li class="nav-item mb-0">
+									<button class="navbar-toggler mt-n1 me-n3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-expanded="false">
+										<span class="navbar-toggler-icon"></span>
+									</button>
+								</li>
+							</ul>
+						</div>
+						<!-- Navbar collapse -->
+						<nav
+							class="collapse navbar-collapse order-lg-2 menu-ind" id="navbarCollapse">
+							<!-- Menu -->
+							<ul class="navbar-nav me-auto bg-dark">
+								<li class="nav-item">
+									<a href="/pt-br" class="nav-link text-info">Home</a>
+								</li>
+								<li class="nav-item dropdown mega-dropdown">
+									<a href="#" class="nav-link text-white text-white">Loja <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+									<div class="dropdown-menu bg-dark border-dark">
+										<div class="container pt-lg-1 pb-lg-3">
+
+											<div class="row">
+												{% for subcategory in sub_categories %}
+
+															<div class="col-lg-2 col-md-3 py-2">
+															<h4 class="fs-sm text-uppercase pt-1 mb-2 text-white">{{subcategory.br_name}}</h4>
+																{% for category in subcategory.category %}
+
+															<ul class="list-unstyled">
+															<li>
+    																		<a href="{{ url_for('category_selected',br_name=category.br_name) }}" class="dropdown-item text-white">{{category.br_name}}</a>
+    																	</li>
+                														</ul>	{% endfor %}
+														</div>
+												{% endfor %}
+											</div></div></div>						<li class="nav-item dropdown">
+									<a href="/pt-br/sobre" class="nav-link text-white text-white">Sobre nós <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+									<ul class="dropdown-menu bg-dark border-dark">
+										<li><a href="/pt-br/faq" class="dropdown-item text-white">FAQ</a></li>
+																			</ul>
+								</li>
+
+																									<li class="nav-item">
+									<a href="https://discord.gg/FfGdj7bpxv" target="_blank" class="nav-link text-white">Discord</a>
+								</li>
+								<li class="nav-item dropdown">
+									<a href="/pt-br" class="nav-link text-white text-white"><span class="flag-icon flag-icon-br"></span> PT <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+									<ul class="dropdown-menu bg-dark border-dark">
+										<li><a href="/en-us" class="dropdown-item text-white"><span class="flag-icon flag-icon-us"></span> EN </a></li>
+																			</ul>
+								</li>
+								{% if current_user.id == 1 %}
+								<li class="nav-item dropdown">
+								<a href="/" class="nav-link text-white text-white">Billy <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+								<ul class="dropdown-menu bg-dark border-dark">
+										<li><a href="/add-vehicle" class="dropdown-item text-white">Adicionar Veículo</a></li>
+										<li><a href="/add-category" class="dropdown-item text-white">Adicionar Categoria</a></li>
+										<li><a href="/add-subcategory" class="dropdown-item text-white">Adicionar Subcategoria</a></li>
+										<li><a href="/delete-category" class="dropdown-item text-white">Deletar Categoria ou Subcategoria</a></li>
+
+								</ul></li>
+									{% endif %}
+
+								{% if current_user.is_authenticated %}
+					<li class="nav-item">
+
+									<a href="/logout" class="nav-link text-info">Logout</a>
+								</li>
+								{% endif %}
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</header>

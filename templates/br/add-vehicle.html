@@ -1,0 +1,41 @@
+{% import "bootstrap/wtf.html" as wtf %} {% block content %} {% include "/br/header.html" %}
+<!-- Page Header-->
+<header class="masthead" style="">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="post-heading f-color">
+                    <h1 class="f-color">Create or Edit a vehicle</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Post Content-->
+<article class="mb-4">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7 f-color">
+                {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class="flashes f-color">
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+                <p>
+                    {{ wtf.quick_form(form, novalidate=False, button_map={"submit": "primary"}) }}
+                    {{ ckeditor.load() }}
+                    {{ ckeditor.config(name='body') }}
+                </p>
+            </div>
+        </div>
+    </div>
+    >
+</article>
+<hr>
+<script src="//cdn.ckeditor.com/4.9.2/standard/ckeditor.js"></script>
+{% endblock %}
+{% include "/br/footer.html" %}

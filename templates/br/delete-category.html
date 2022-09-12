@@ -1,0 +1,33 @@
+{% import "bootstrap/wtf.html" as wtf %} {% block content %} {% include "/br/header.html" %}
+<!-- Page Header-->
+<header class="masthead" style="">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="post-heading f-color">
+                    <h1 class="f-color">Deletar Categoria</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Post Content-->
+<article class="mb-4">
+    <div class="container px-4 px-lg-5">
+{% for subcategory in sub_categories %}
+        <p></p>
+<h4 class="fs-sm text-uppercase pt-1 mb-2 text-info">{{subcategory.br_name}}  - <a href="{{url_for('delete_subcat', subcat_id=subcategory.id)}}" target="_blank"><i class="fa-solid fa-x fa-cog"></i></a></h4>
+{% for category in subcategory.category %}
+					<ul class="list-unstyled">
+					<li>
+			<a href="{{ url_for('category_selected',br_name=category.br_name) }}" class="text-white">{{category.br_name}}&nbsp;&nbsp;&nbsp;&nbsp; <a href="{{url_for('delete_cat', cat_id=category.id)}}" target="_blank"><i class="fa-solid fa-x fa-cog"></i></a></a>
+		</li>
+
+       {% endfor %}
+                        <p></p>
+    {% endfor %}
+    </ul></div>
+<hr>
+<script src="//cdn.ckeditor.com/4.9.2/standard/ckeditor.js"></script>
+{% endblock %}
+{% include "/br/footer.html" %}
